@@ -1,0 +1,113 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char card[50]; // Change from char to char array to store the card name
+    int user;
+    int pin;
+    int amount;
+    int balance;
+    int diff;
+
+    printf("Welcome To The ATM\n\n");
+    printf("Please insert your card/Name: ");
+    scanf("%s", card); // Use %s to read a string
+
+    if (strcmp(card, "AKASH") == 0) 
+    { // Use strcmp to compare strings
+        printf("Hello AKASH.!\n\n");
+        printf("> Press-1  ----> withdraw money\n\n");
+        printf("> Press-2  ----> deposit money\n\n");
+        printf("> Press-3  ----> check balance\n\n");
+        printf("> Press-4  ----> Exit\n\n");
+
+        balance = 5000; // Initial balance
+        scanf("%d", &user);
+
+        if (user == 1)
+        { // Withdraw money
+            printf("Please enter your 4-digit PIN: ");
+            scanf("%d", &pin);
+
+            if (pin == 2580) 
+            { // Use == for comparison
+                printf("Enter the amount to be withdrawn: ");
+                scanf("%d", &amount);
+
+                if (amount > balance) 
+                {
+                    printf("Insufficient funds\n\n");
+                } 
+                else 
+                {
+                    printf("Collect the money\n");
+                    
+                    balance -= amount; // Update the balance after withdrawal
+                    printf("Now your bank balance: %d\n", balance);
+                    printf("Thank you for using the ATM. Goodbye!\n");
+                }
+            } 
+            else
+            {
+                printf("Incorrect PIN\n");
+                printf("Thank you for using the ATM. Goodbye!\n");
+            }
+        }
+        
+        
+        else if (user == 2)
+        { // Deposit money
+            printf("Please enter your 4-digit PIN: ");
+            scanf("%d", &pin);
+
+            if (pin == 2580) { // Use == for comparison
+                printf("Enter the amount to deposit: ");
+                scanf("%d", &amount);
+                balance += amount; // Update the balance after deposit
+                printf("Successfully deposited\n");
+                printf("Now your bank balance: %d\n", balance);
+                printf("Thank you for using the ATM. Goodbye!\n");
+            } 
+            else 
+            {
+                printf("Incorrect PIN\n");
+                printf("Thank you for using the ATM. Goodbye!\n");
+            }
+        } 
+        
+        
+        else if (user == 3) { // Check balance
+            printf("Please enter your 4-digit PIN: ");
+            scanf("%d", &pin);
+
+            if (pin == 2580)
+            {
+                printf("Your bank balance: %d\n", balance);
+                printf("Thank you for using the ATM. Goodbye!\n");
+            } 
+            else
+            {
+                printf("Incorrect PIN\n");
+                printf("Thank you for using the ATM. Goodbye!\n");
+            }
+        } 
+        else if (user == 4)
+        { // Exit
+            printf("Thank you for using the ATM. Goodbye!\n");
+            return 0;
+        }
+        else
+        {
+            printf("Invalid choice. Please try again.\n");
+            printf("Thank you for using the ATM. Goodbye!\n");
+        }
+    }
+    else
+    {
+        printf("Invalid card\n");
+        printf("Thank you for using the ATM. Goodbye!\n");
+    }
+
+    return 0;
+}
